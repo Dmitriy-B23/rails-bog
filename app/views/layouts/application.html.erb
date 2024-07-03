@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+  <nav>
+    <% if user_signed_in? %>
+    	<h4> Вошли в систему как <%= current_user.email %>. Это вы? </h4>
+      <h5> <%= link_to 'Редактировать профиль', edit_user_registration_path %>
+      <%= link_to 'Выйти', destroy_user_session_path, method: :delete %></h5>
+    <% else %>
+      <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+      <%= link_to 'Авторизоваться', new_user_session_path %>
+    <% end %>
+  </nav>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
+</body>
+</html>
+

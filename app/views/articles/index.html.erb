@@ -1,0 +1,16 @@
+<h1>Статьи</h1>
+
+В нашем блоге <%= Article.public_count %> статей и их количество растет!
+
+<ul>
+  <% @articles.each do |article| %>
+    <% unless article.archived? %>
+      <li>
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2><%= link_to "Создать новую статью", new_article_path %></h2>
+

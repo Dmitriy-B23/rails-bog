@@ -1,0 +1,18 @@
+<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :commenter, 'Имя' %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body, 'Текст' %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.label :status, 'Статус' %><br>
+    <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
+  </p>
+  <p>
+    <%= form.submit 'Создать комментарий' %>
+  </p>
+<% end %>
+
